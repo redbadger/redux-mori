@@ -1,13 +1,14 @@
 // @flow
-import { toClj, getIn, updateIn, inc } from 'mori';
+import { toClj, hashMap, getIn, updateIn, inc } from 'mori';
 import combineReducers from '../src/combineReducers';
+import type { State } from '../src/types';
 
 describe('combineReducers()', () => {
   context('reducer returns received state', () => {
     it('returns initial state', () => {
       const rootReducer = combineReducers({
-        foo: (state) => {
-          return state;
+        foo: (state: ?State) => {
+          return state || hashMap();
         },
       });
 
@@ -25,7 +26,7 @@ describe('combineReducers()', () => {
   context('reducer creates new domain state', () => {
     it('returns new state', () => {
       const rootReducer = combineReducers({
-        foo: (state) => {
+        foo: (state: ?State) => {
           return updateIn(state, ['count'], inc);
         },
       });
@@ -43,7 +44,7 @@ describe('combineReducers()', () => {
 
   context('root reducer is created from nested combineReducers', () => {
     it('returns initial state from default values', () => {
-      const initialState = toClj({
+      const initialState: State = toClj({
         outer: {
           inner: {
             bar: false,
@@ -52,20 +53,20 @@ describe('combineReducers()', () => {
         },
       });
 
-      const innerDefaultState = toClj({
+      const innerDefaultState: State = toClj({
         bar: false,
         foo: true,
       });
 
       const rootReducer = combineReducers({
         outer: combineReducers({
-          inner: (state = innerDefaultState) => {
-            return state;
+          inner: (state : ? State = innerDefaultState) => {
+            return state || hashMap();
           },
         }),
       });
 
-      expect(rootReducer().toString()).to.eql(initialState.toString());
+      expect(rootReducer(undefined, {type: 'WHATEVS'}).toString()).to.eql(initialState.toString());
     });
   });
 });
