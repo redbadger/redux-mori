@@ -1,0 +1,60 @@
+{
+  "name": "redux-mori",
+  "version": "0.0.1",
+  "description": "Drop-in replacement for Redux combineReducers that works with mori.js immutable data structures",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "cross-env BABEL_ENV=commonjs babel src --out-dir dist",
+    "check": "npm run lint && npm test",
+    "clean": "rimraf dist",
+    "lint": "eslint --cache src",
+    "prepublish": "npm run clean && npm run check && npm run build",
+    "test:watch": "npm test -- --watch",
+    "test": "mocha --compilers js:babel-register --require test.setup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redbadger/redux-mori.git"
+  },
+  "keywords": [
+    "redux",
+    "immutable",
+    "mori"
+  ],
+  "authors": [
+    "Stuart Harris <stuart.harris@red-badger.com> (https://github.com/stuartharris)",
+    "Anna Doubkova <anna.doubkova@red-badger.com> (https://github.com/lithin)"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redbadger/redux-mori/issues"
+  },
+  "homepage": "https://github.com/redbadger/redux-mori#readme",
+  "dependencies": {
+    "mori": "^0.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-module-alias": "^1.4.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "cross-env": "^1.0.8",
+    "eslint": "^2.12.0",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.3.2",
+    "eslint-plugin-standard": "^1.3.2",
+    "mocha": "^2.5.3",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1"
+  }
+}
