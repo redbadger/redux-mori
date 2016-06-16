@@ -10,7 +10,7 @@ function combineReducers (reducers: Reducers) : Reducer {
       const currentDomainState: ?State = get(state, key, undefined);
       const nextDomainState: State = reducer(currentDomainState, action);
       return merge(acc, hashMap(key, nextDomainState));
-    }, state || hashMap(), reducers);
+    }, state || hashMap());
   };
 };
 
