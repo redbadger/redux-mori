@@ -8,7 +8,7 @@ Any `preloadedState` for Redux's [`createStore`](https://github.com/reactjs/redu
 
 ## Usage
 
-Create a store with `preloadedState` set to an instance of [`hashMap`]((http://swannodette.github.io/mori/#hashMap)):
+If you create a store with `preloadedState`, make sure it is an instance of [`hashMap`]((http://swannodette.github.io/mori/#hashMap)):
 
 ```js
 import mori from 'mori';
