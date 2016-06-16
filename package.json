@@ -1,6 +1,6 @@
 {
   "name": "redux-mori",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Drop-in replacement for Redux combineReducers that works with mori.js immutable data structures",
   "main": "./dist/index.js",
   "files": [
