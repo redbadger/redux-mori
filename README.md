@@ -11,13 +11,13 @@ Any `preloadedState` for Redux's [`createStore`](https://github.com/reactjs/redu
 Create a store with `preloadedState` set to an instance of [`hashMap`]((http://swannodette.github.io/mori/#hashMap)):
 
 ```js
-import mori from 'mori';
+import { toClj } from 'mori';
 import { combineReducers } from 'redux-mori';
 import { createStore } from 'redux';
 import fooReducer from './fooReducer';
 import bazReducer from './bazReducer';
 
-const preloadedState = mori.toClj({foo: 'bar', baz: 'quux'});
+const preloadedState = toClj({foo: 'bar', baz: 'quux'});
 const rootReducer = combineReducers({fooReducer, bazReducer});
 const store = createStore(rootReducer, preloadedState);
 ```
