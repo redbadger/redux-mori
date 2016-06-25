@@ -18,7 +18,7 @@ describe('combineReducers()', () => {
         },
       });
 
-      const actual = rootReducer(initialState, {type: 'NONE'});
+      const actual = rootReducer(initialState, hashMap('type', 'NONE'));
       expect(actual.toString()).to.equal(initialState.toString());
     });
   });
@@ -37,7 +37,7 @@ describe('combineReducers()', () => {
         },
       });
 
-      const actual = rootReducer(initialState, {type: 'ADD'});
+      const actual = rootReducer(initialState, hashMap('type', 'ADD'));
       expect(getIn(actual, ['foo', 'count'])).to.equal(1);
     });
   });
@@ -66,7 +66,7 @@ describe('combineReducers()', () => {
         }),
       });
 
-      expect(rootReducer(undefined, {type: 'WHATEVS'}).toString()).to.eql(initialState.toString());
+      expect(rootReducer(undefined, hashMap('type', 'WHATEVS')).toString()).to.eql(initialState.toString());
     });
   });
 });
