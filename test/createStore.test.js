@@ -3,7 +3,6 @@ import createStore from '../src/createStore';
 import combineReducers from '../src/combineReducers';
 import * as reducers from './fixtures/reducers';
 import { addTodo, unknownAction } from './fixtures/actionCreators';
-import type { State } from '../src/types';
 
 describe('createStore()', () => {
   context('initialized', () => {
@@ -68,13 +67,13 @@ describe('createStore()', () => {
   context('applying reducer to initial action', () => {
     it('should return correct initial state', () => {
       const store = createStore(reducers.todos, vector(
-        hashMap( 'id', 1, 'text', 'Hello')
+        hashMap('id', 1, 'text', 'Hello')
       ));
       const expected = vector(
         hashMap('id', 1, 'text', 'Hello')
       );
 
-      expect(equals(store.getState(), expected)).to.be.true
+      expect(equals(store.getState(), expected)).to.be.true;
     });
   });
 
@@ -102,7 +101,7 @@ describe('createStore()', () => {
         hashMap(
           'id', 2,
           'text', 'World'
-        )))).to.be.true
+        )))).to.be.true;
     });
   });
 
@@ -115,16 +114,16 @@ describe('createStore()', () => {
       store.replaceReducer(reducers.todosReverse);
 
       expect(equals(store.getState(), vector(
-        hashMap( 'id', 1, 'text', 'Hello'),
-        hashMap( 'id', 2, 'text', 'World')
+        hashMap('id', 1, 'text', 'Hello'),
+        hashMap('id', 2, 'text', 'World')
       ))).to.be.true;
 
       store.dispatch(addTodo('Top'));
 
       expect(equals(store.getState(), vector(
-        hashMap( 'id', 3, 'text', 'Top'),
-        hashMap( 'id', 1, 'text', 'Hello'),
-        hashMap( 'id', 2, 'text', 'World')
+        hashMap('id', 3, 'text', 'Top'),
+        hashMap('id', 1, 'text', 'Hello'),
+        hashMap('id', 2, 'text', 'World')
       ))).to.be.true;
 
       store.replaceReducer(reducers.todos);
@@ -132,10 +131,10 @@ describe('createStore()', () => {
       store.dispatch(addTodo('Bottom'));
 
       expect(equals(store.getState(), vector(
-        hashMap( 'id', 3, 'text', 'Top'),
-        hashMap( 'id', 1, 'text', 'Hello'),
-        hashMap( 'id', 2, 'text', 'World'),
-        hashMap( 'id', 4, 'text', 'Bottom')
+        hashMap('id', 3, 'text', 'Top'),
+        hashMap('id', 1, 'text', 'Hello'),
+        hashMap('id', 2, 'text', 'World'),
+        hashMap('id', 4, 'text', 'Bottom')
       ))).to.be.true;
     });
   });
@@ -164,7 +163,7 @@ describe('createStore()', () => {
       store.dispatch(unknownAction());
 
       expect(listenerA).to.have.been.calledOnce;
-      unsubscribeA()
+      unsubscribeA();
 
       store.dispatch(unknownAction());
       expect(listenerA).to.have.been.calledOnce;
