@@ -1,7 +1,7 @@
 {
   "name": "redux-mori",
   "version": "0.0.3",
-  "description": "Drop-in replacement for Redux combineReducers that works with mori.js immutable data structures",
+  "description": "Drop-in replacement for Redux combineReducers and createStore that works with mori.js immutable data structures",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -55,6 +55,8 @@
     "eslint-plugin-standard": "^1.3.2",
     "mocha": "^2.5.3",
     "rimraf": "^2.5.2",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1"
   }
 }
