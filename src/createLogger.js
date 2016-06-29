@@ -1,4 +1,6 @@
-import { createLogger as reduxLogger } from 'redux-logger';
+// @flow
+
+import reduxLogger from 'redux-logger';
 import { toJs, isCollection } from 'mori';
 
 export const stateTransformer = (state: Object): Object => toJs(state);
@@ -20,9 +22,9 @@ const getDefaultOptions = (): Object => ({
   stateTransformer,
 });
 
-const createLogger = (options: Object): Object => reduxLogger({
+const createLogger = (options: Object, logger: Function = reduxLogger): Object => logger({ // eslint-disable-line space-infix-ops
   ...getDefaultOptions(),
-  options,
+  ...options,
 });
 
 export default createLogger;

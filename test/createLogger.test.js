@@ -1,8 +1,29 @@
 // @flow
 import { hashMap, toJs } from 'mori';
-import { stateTransformer, actionTransformer } from '../src/createLogger';
+import createLogger, {
+  actionTransformer,
+  stateTransformer,
+} from '../src/createLogger';
 
 describe('create redux logger', () => {
+  context('create logger', () => {
+    it('merges default options with options from argument, creating redux logger', () => {
+      const logger = sinon.spy();
+      const options = {
+        collapsed: false,
+        another: 'option',
+      };
+      const expectedOptions = {
+        actionTransformer,
+        stateTransformer,
+        collapsed: false,
+        another: 'option',
+      };
+      createLogger(options, logger);
+      expect(logger).to.have.been.calledWith(expectedOptions);
+    });
+  });
+
   context('state transformation', () => {
     it('transforms state into js', () => {
       const initial = hashMap(
