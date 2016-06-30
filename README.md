@@ -27,3 +27,18 @@ const store = createStore(rootReducer, preloadedState);
 const ACTION_REQUEST = 'ACTION_REQUEST'
 const actionRequest = () => hashMap('type', ACTION_REQUEST)
 ```
+
+Please note you can still use original redux `createStore` and write actions as JS objects, even if you're using `mori` in your state.
+
+## Logger
+If you're using Redux Logger and would like to get readable logs of state and actions, you can use our `createLogger` wrapper. You can use it exactly in the same way as the original but it presets following values:
+
+```js
+{
+  actionTransformer,
+  collapsed: true,
+  stateTransformer,
+}
+```
+
+Actions get transformed fully into JS if they are `mori` objects. If they are JS objects with only some values as `mori` structures, it will transform this data into JS as well.

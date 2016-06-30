@@ -34,7 +34,8 @@
   },
   "homepage": "https://github.com/redbadger/redux-mori#readme",
   "dependencies": {
-    "mori": "^0.3.2"
+    "mori": "^0.3.2",
+    "redux-logger": "^2.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
