@@ -41,4 +41,21 @@ If you're using Redux Logger and would like to get readable logs of state and ac
 }
 ```
 
+Example:
+
+```js
+import createLogger from 'redux-mori/dist/createLogger';
+import { createStore } from 'redux-mori';
+import { applyMiddleware } from 'redux';
+const middlewares = [];
+if (isDev) {
+  const logger = createLogger({
+    predicate: (getState, action) => !/EFFECT_/.test(action.type),
+  });
+  middlewares.push(logger);
+}
+
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
+```
+
 Actions get transformed fully into JS if they are `mori` objects. If they are JS objects with only some values as `mori` structures, it will transform this data into JS as well.
